@@ -1,0 +1,21 @@
+<resources>
+    <!-- Launch theme for Android 12+ -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <!-- Background color of the system splash -->
+        <!-- 🚫 REMOVE the animated icon (this is the cropped circular logo) -->
+        <!-- Optional: no animation -->
+        <item name="android:windowSplashScreenAnimationDuration">0</item>
+        <!-- Icon background color (irrelevant since icon is null) -->
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:windowSplashScreenBackground">#000000</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/android12splash</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#000000</item>
+    </style>
+    <!-- Normal theme after launch -->
+    <style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+</resources>
