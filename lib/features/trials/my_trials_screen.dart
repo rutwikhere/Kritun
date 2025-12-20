@@ -84,6 +84,9 @@ class _TrialsList extends StatelessWidget {
           itemCount: docs.length,
           itemBuilder: (context, index) {
             final data = docs[index].data();
+            final ownerUid = data['ownerUid'] as String;
+            final targetUid = data['targetUid'] as String;
+
             final trialId = docs[index].id;
             final game = (data['game'] ?? '') as String;
             final notes = (data['notes'] ?? '') as String;
@@ -102,8 +105,19 @@ class _TrialsList extends StatelessWidget {
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (notes.isNotEmpty) Text(notes),
+                    // 👤 SHOW WHO THE TRIAL IS WITH
+                    if (isOwnerView)
+                      _UserMiniTile(userId: targetUid, label: 'To')
+                    else
+                      _UserMiniTile(userId: ownerUid, label: 'From'),
+
+                    if (notes.isNotEmpty) ...[
+                      const SizedBox(height: 4),
+                      Text(notes),
+                    ],
+
                     const SizedBox(height: 4),
+
                     Row(
                       children: [
                         _StatusChip(status: status, result: result),
@@ -125,6 +139,7 @@ class _TrialsList extends StatelessWidget {
                           ),
                       ],
                     ),
+
                     if (createdAt != null) ...[
                       const SizedBox(height: 4),
                       Text(
@@ -137,6 +152,7 @@ class _TrialsList extends StatelessWidget {
                     ],
                   ],
                 ),
+
                 onTap: isOwnerView
                     ? () {
                         _openResultSheet(context, trialId, data);
@@ -179,6 +195,55 @@ class _TrialsList extends StatelessWidget {
         initialResult: (data['result'] as String?) ?? 'pass',
         initialFeedback: (data['feedback'] as String?) ?? '',
       ),
+    );
+  }
+}
+
+class _UserMiniTile extends StatelessWidget {
+  final String userId;
+  final String label;
+
+  const _UserMiniTile({required this.userId, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+      stream: FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return const SizedBox();
+
+        final data = snapshot.data!.data();
+        if (data == null) return const SizedBox();
+
+        final username = data['username'] ?? 'Unknown';
+        final avatarUrl = (data['avatarUrl'] ?? '').toString();
+
+        return Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 12,
+                backgroundColor: Colors.grey[800],
+                backgroundImage: avatarUrl.isNotEmpty
+                    ? NetworkImage(avatarUrl)
+                    : null,
+                child: avatarUrl.isEmpty
+                    ? const Icon(Icons.person, size: 14)
+                    : null,
+              ),
+              const SizedBox(width: 6),
+              Text(
+                '$label @$username',
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

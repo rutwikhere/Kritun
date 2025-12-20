@@ -1,4 +1,4 @@
-package com.example.kritun
+package com.techbrats.kritun
 
 import io.flutter.embedding.android.FlutterActivity
 

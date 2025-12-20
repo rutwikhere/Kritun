@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kritun">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- ✅ Needed for Android 13+ to show notifications -->
     <uses-permission
