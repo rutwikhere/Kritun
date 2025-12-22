@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "27269304190",
-    "project_id": "kritun-226bd",
-    "storage_bucket": "kritun-226bd.firebasestorage.app"
+    "project_number": "PROJECT_NUMBER",
+    "project_id": "PROJECT_ID",
+    "storage_bucket": "PROJECT_ID.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:27269304190:android:54c8009c6a753814b5ad2f",
+        "mobilesdk_app_id": "ANDROID_APP_ID",
         "android_client_info": {
           "package_name": "com.example.kritun"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCMIZQ0Hmwt--OLv2t5D6zsEm3JjoAGVMs"
+          "current_key": "ANDROID_API_KEY"
         }
       ],
       "services": {
