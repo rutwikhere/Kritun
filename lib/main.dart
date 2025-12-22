@@ -13,13 +13,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Firebase
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-  // Supabase
+  // Supabase (sanitized)
   await supa.Supabase.initialize(
-    url: 'https://bzvbdagelpnvxuxslxyx.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ6dmJkYWdlbHBudnh1eHNseHl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5NDY3NDMsImV4cCI6MjA4MDUyMjc0M30.kmd7rIhNIrgLlK1T_LLgJPBJCZb8q-K0DTNUDF8AYeI',
+    url: 'SUPABASE_PROJECT_URL',
+    anonKey: 'SUPABASE_ANON_PUBLIC_KEY',
   );
 
   runApp(const KritunApp());
@@ -35,7 +36,6 @@ class KritunApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
 
-      // ✅ Directly show AuthGate as first Flutter screen
       home: const AuthGate(),
 
       routes: {
@@ -48,9 +48,7 @@ class KritunApp extends StatelessWidget {
 }
 
 /// ----------------------------------------------------------
-///  AUTH GATE
-///  - If user logged in  -> HomeShell
-///  - If not logged in   -> LoginScreen
+/// AUTH GATE
 /// ----------------------------------------------------------
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
