@@ -4,16 +4,6 @@ import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-/// Default [FirebaseOptions] for use with your Firebase apps.
-///
-/// Example:
-/// ```dart
-/// import 'firebase_options.dart';
-/// // ...
-/// await Firebase.initializeApp(
-///   options: DefaultFirebaseOptions.currentPlatform,
-/// );
-/// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -30,8 +20,7 @@ class DefaultFirebaseOptions {
         return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+          'DefaultFirebaseOptions have not been configured for linux.',
         );
       default:
         throw UnsupportedError(
@@ -40,49 +29,54 @@ class DefaultFirebaseOptions {
     }
   }
 
+  // 🌐 WEB
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCxcLH63-8hZFkFyrWTimEuZ0kCrvIJm50',
-    appId: '1:27269304190:web:beef3208b705a760b5ad2f',
-    messagingSenderId: '27269304190',
-    projectId: 'kritun-226bd',
-    authDomain: 'kritun-226bd.firebaseapp.com',
-    storageBucket: 'kritun-226bd.firebasestorage.app',
-    measurementId: 'G-0XPH326MG6',
+    apiKey: 'WEB_API_KEY',
+    appId: 'WEB_APP_ID',
+    messagingSenderId: 'WEB_SENDER_ID',
+    projectId: 'PROJECT_ID',
+    authDomain: 'PROJECT_ID.firebaseapp.com',
+    storageBucket: 'PROJECT_ID.firebasestorage.app',
+    measurementId: 'WEB_MEASUREMENT_ID',
   );
 
+  // 🤖 ANDROID
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCMIZQ0Hmwt--OLv2t5D6zsEm3JjoAGVMs',
-    appId: '1:27269304190:android:54c8009c6a753814b5ad2f',
-    messagingSenderId: '27269304190',
-    projectId: 'kritun-226bd',
-    storageBucket: 'kritun-226bd.firebasestorage.app',
+    apiKey: 'ANDROID_API_KEY',
+    appId: 'ANDROID_APP_ID',
+    messagingSenderId: 'ANDROID_SENDER_ID',
+    projectId: 'PROJECT_ID',
+    storageBucket: 'PROJECT_ID.firebasestorage.app',
   );
 
+  // 🍎 IOS
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDE4tVFhETF6jDJAkKscqxZaEFjSHZb_gI',
-    appId: '1:27269304190:ios:9c5d660a0770b437b5ad2f',
-    messagingSenderId: '27269304190',
-    projectId: 'kritun-226bd',
-    storageBucket: 'kritun-226bd.firebasestorage.app',
-    iosBundleId: 'com.example.kritun',
+    apiKey: 'IOS_API_KEY',
+    appId: 'IOS_APP_ID',
+    messagingSenderId: 'IOS_SENDER_ID',
+    projectId: 'PROJECT_ID',
+    storageBucket: 'PROJECT_ID.firebasestorage.app',
+    iosBundleId: 'com.yourcompany.yourapp',
   );
 
+  // 💻 MACOS
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDE4tVFhETF6jDJAkKscqxZaEFjSHZb_gI',
-    appId: '1:27269304190:ios:9c5d660a0770b437b5ad2f',
-    messagingSenderId: '27269304190',
-    projectId: 'kritun-226bd',
-    storageBucket: 'kritun-226bd.firebasestorage.app',
-    iosBundleId: 'com.example.kritun',
+    apiKey: 'MACOS_API_KEY',
+    appId: 'MACOS_APP_ID',
+    messagingSenderId: 'MACOS_SENDER_ID',
+    projectId: 'PROJECT_ID',
+    storageBucket: 'PROJECT_ID.firebasestorage.app',
+    iosBundleId: 'com.yourcompany.yourapp',
   );
 
+  // 🪟 WINDOWS
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCxcLH63-8hZFkFyrWTimEuZ0kCrvIJm50',
-    appId: '1:27269304190:web:21ca8c96a3913cb7b5ad2f',
-    messagingSenderId: '27269304190',
-    projectId: 'kritun-226bd',
-    authDomain: 'kritun-226bd.firebaseapp.com',
-    storageBucket: 'kritun-226bd.firebasestorage.app',
-    measurementId: 'G-HC1Z67FQ3M',
+    apiKey: 'WINDOWS_API_KEY',
+    appId: 'WINDOWS_APP_ID',
+    messagingSenderId: 'WINDOWS_SENDER_ID',
+    projectId: 'PROJECT_ID',
+    authDomain: 'PROJECT_ID.firebaseapp.com',
+    storageBucket: 'PROJECT_ID.firebasestorage.app',
+    measurementId: 'WINDOWS_MEASUREMENT_ID',
   );
 }
