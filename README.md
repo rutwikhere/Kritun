@@ -125,6 +125,13 @@ License will be added before public release.
 
 ---
 
+## Get it on Google Playstore
+
+Link - https://play.google.com/store/apps/details?id=com.techbrats.kritun
+
+
+---
+
 ## 👨‍💻 Author
 
 **Rutwik Wakale**  
